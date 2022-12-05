@@ -1,7 +1,12 @@
 import React from "react";
+import NavbarSpotify from "./NavbarSpotify";
+// import NavbarSpotify from "./components/NavbarSpotify";
 
 const TrackList = () => {
   return (
+<>
+{/* <NavbarSpotify/> */}
+    
     <div style={{display:'inline'}}>
       <div className="GoodMorning">
         <h2>Good evening</h2>
@@ -341,6 +346,7 @@ const TrackList = () => {
         </div>
       </div> */}
     </div>
+    </>
   );
 };
 

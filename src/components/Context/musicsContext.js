@@ -13,7 +13,7 @@ function reducer(state = INIT_STATE, action) {
     case "GET_musics":
       return {
         ...state,
-        musics: action.payload.results,
+        musics: action.payload,
       };
     case "GET_CATEGORIES":
       return { ...state, categories: action.payload };
@@ -24,10 +24,8 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-
-
 const MusicsContextProvider = ({ children }) => {
-  const API = "http://18.197.10.36";
+  const API = "http://3.71.34.7";
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   async function createtrack(newtrack, navigate) {
@@ -39,9 +37,9 @@ const MusicsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.post(`${API}/music/tracks`, newtrack, config);
+      const res = await axios.post(`${API}/music/tracks/`, newtrack, config);
       console.log(res);
-      navigate("/musics");
+      navigate("/music");
     } catch (err) {
       console.log(err);
     }
@@ -56,10 +54,7 @@ const MusicsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(
-        `${API}/music/tracks${window.location.search}`,
-        config
-      );
+      const res = await axios(`${API}/music/tracks/`, config);
       dispatch({
         type: "GET_musics",
         payload: res.data,
@@ -70,7 +65,7 @@ const MusicsContextProvider = ({ children }) => {
     }
   }
 
-  async function getOnetrack(id) {
+  async function getOnetrack(slug) {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
@@ -79,7 +74,7 @@ const MusicsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(`${API}/music/tracks${id}`, config);
+      const res = await axios(`${API}/music/tracks/${slug}/`, config);
       dispatch({
         type: "GET_ONE_track",
         payload: res.data,
@@ -89,7 +84,7 @@ const MusicsContextProvider = ({ children }) => {
     }
   }
 
-  async function updatetrack(id, editedtrack, navigate) {
+  async function updatetrack(slug, editedtrack, navigate) {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
@@ -99,18 +94,18 @@ const MusicsContextProvider = ({ children }) => {
         },
       };
       const res = await axios.patch(
-        `${API}/music/tracks${id}/`,
+        `${API}/music/tracks${slug}/`,
         editedtrack,
         config
       );
-      navigate("/musics");
+      navigate("/music");
       getmusics();
     } catch (err) {
       console.log(err);
     }
   }
 
-  async function deletetrack(id) {
+  async function deletetrack(slug) {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
@@ -119,7 +114,7 @@ const MusicsContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      await axios.delete(`${API}/music/tracks${id}/`, config);
+      await axios.delete(`${API}/music/tracks${slug}/`, config);
       getmusics();
     } catch (err) {
       console.log(err);

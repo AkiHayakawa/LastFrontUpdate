@@ -8,7 +8,7 @@ import { musicsContext } from "../Context/musicsContext";
 const EditMusic = () => {
   const { getOnetrack, onetrack, updatetrack } = useContext(musicsContext);
 
-  const { id } = useParams();
+  const { slug } = useParams();
 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const EditMusic = () => {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
-    getOnetrack(id);
+    getOnetrack(slug);
   }, []);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const EditMusic = () => {
       image,
     };
 
-    updatetrack(id, editGame);
+    updatetrack(slug, editGame);
     navigate("/games");
   }
 
@@ -55,7 +55,7 @@ const EditMusic = () => {
         label="Title"
         type="search"
         value={title}
-        onChange={e => setTitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
       />
       <TextField
         className="Input"
@@ -63,7 +63,7 @@ const EditMusic = () => {
         label="Img"
         type="search"
         value={image}
-        onChange={e => setImage(e.target.value)}
+        onChange={(e) => setImage(e.target.value)}
       />
       <TextField
         className="Input"
@@ -71,7 +71,7 @@ const EditMusic = () => {
         label="user"
         type="search"
         value={user}
-        onChange={e => setUser(e.target.value)}
+        onChange={(e) => setUser(e.target.value)}
       />
       <TextField
         className="Input"
@@ -79,7 +79,7 @@ const EditMusic = () => {
         label="track"
         type="search"
         value={track}
-        onChange={e => setTrack(e.target.value)}
+        onChange={(e) => setTrack(e.target.value)}
       />
       <Stack spacing={2} direction="row">
         <Button
@@ -87,7 +87,8 @@ const EditMusic = () => {
           onClick={() => {
             saveChanges();
             navigate("/");
-          }}>
+          }}
+        >
           Save Changes
         </Button>
       </Stack>

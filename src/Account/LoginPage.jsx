@@ -45,7 +45,7 @@ const LoginPage = () => {
         />
       </div>
       <div>
-        <p className="login_title">
+        <p className="login_title p">
           Чтобы продолжить, войдите в <strong>Spotify.</strong>
         </p>
         <div className="login_block_faceAndGoog">

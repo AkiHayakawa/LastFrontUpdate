@@ -5,18 +5,21 @@ import { musicsContext } from "../Context/musicsContext";
 const Createmusics = () => {
   const navigate = useNavigate();
   const { createtrack } = useContext(musicsContext);
-  const [user, setUser] = useState("");
-  const [title, setTitle] = useState("");
-  const [track, setTrack] = useState(null);
+  const [title, setTitle] = useState("title");
+  const [file, setFile] = useState(null);
   const [image, setImage] = useState(null);
-// jpg mp3
+  const [genre, setGenre] = useState("lofi");
+  const [genreArrow, setGenreArrow] = useState([genre]);
+
+  // jpg mp3
   function savetrack() {
     let newtrack = new FormData();
-    newtrack.append("user", user);
     newtrack.append("title", title);
-    newtrack.append("track", track);
+    newtrack.append("file", file);
     newtrack.append("image", image);
+    newtrack.append("genre", genreArrow);
     createtrack(newtrack, navigate);
+    console.log(newtrack);
   }
 
   return (
@@ -33,14 +36,23 @@ const Createmusics = () => {
       <input
         type="text"
         placeholder="Title"
-        value={user}
-        onChange={(e) => setUser(e.target.value)}
+        value={genre}
+        onChange={(e) => setGenre(e.target.value)}
       />
       <br />
-    
-    
-      <input type="file" accept="image/*" onChange={e => setImage(e.target.files[0])} /><br />
-      {/* <input type="file" accept="audio/mp3*" onChange={e => setTrack(e.target.files[0])} /><br /> */}
+
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => setImage(e.target.files[0])}
+      />
+      <br />
+      <input
+        type="file"
+        accept="audio/*"
+        onChange={(e) => setFile(e.target.files[0])}
+      />
+      <br />
       <button onClick={savetrack}>Save track</button>
     </div>
   );

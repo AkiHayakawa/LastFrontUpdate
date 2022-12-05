@@ -13,7 +13,7 @@ const RestorePassword = () => {
       </div>
       <div className="restore_title_block">
         <h3 style={{ fontSize: "50px" }}>Сброс пароля</h3>
-        <p style={{ marginTop: "40px", fontSize: "20px" }}>
+        <p className="p" style={{ marginTop: "40px", fontSize: "20px" }}>
           Введите <strong>адрес электронной почты,</strong> который вы указали
           при регистрации. Мы отправим вам код для сброса пароля.
         </p>

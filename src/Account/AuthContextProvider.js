@@ -6,12 +6,11 @@ export const authContextProvider = React.createContext();
 export const useAuth = () => useContext(authContextProvider);
 
 const AuthContextProvider = ({ children }) => {
-  const API = "http://18.197.10.36/";
+  const API = "http://3.71.34.7/";
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
-
   async function handleRegister(formData, naviagte) {
     try {
       const res = await axios.post(`${API}account/register/`, formData);
@@ -52,10 +51,10 @@ const AuthContextProvider = ({ children }) => {
     try {
       console.log("CHECK AUTH IS WORKING!");
       const tokens = JSON.parse(localStorage.getItem("tokens"));
-      const Autharization = `Bearer ${tokens.access}`;
+      const Authorization = `Bearer ${tokens.access}`;
       const config = {
         headers: {
-          Autharization,
+          Authorization,
         },
       };
       const res = await axios.post(
@@ -83,10 +82,10 @@ const AuthContextProvider = ({ children }) => {
   async function getTracks() {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
-      const Autharization = `Bearer ${tokens.access}`;
+      const Authorization = `Bearer ${tokens.access}`;
       const config = {
         headers: {
-          Autharization,
+          Authorization,
         },
       };
       let res = await axios.get(`${API}music/tracks/`);
@@ -116,7 +115,8 @@ const AuthContextProvider = ({ children }) => {
         setCurrentUser,
         getTracks,
         // checkAuth,
-      }}>
+      }}
+    >
       {children}
     </authContextProvider.Provider>
   );

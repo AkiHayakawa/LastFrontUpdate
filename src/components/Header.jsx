@@ -4,7 +4,6 @@ import NavbarSpotify from "./NavbarSpotify";
 const Header = () => {
   return (
     <div >
-      <NavbarSpotify />
       <TrackList />
     </div>
   );

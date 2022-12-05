@@ -61,7 +61,7 @@ const RegisterPage = () => {
         />
       </div>
       <div className="register_block_title">
-        <p className="registration_title">
+        <p className="registration_title p">
           Зарегистрируйтесь и слушайте бесплатно
         </p>
         <div className="register_block_faceAndGoog">
@@ -156,7 +156,7 @@ const RegisterPage = () => {
       </div>
       <div className="register_spotify_agreement_block">
         <div className="register_spotify_agreement_mini_block">
-          <p>
+          <p className="p">
             <span className="register_spotify_agreement_title">
               Нажимая «Зарегистрироваться», вы принимаете {""}
               <a
@@ -170,7 +170,7 @@ const RegisterPage = () => {
           </p>
         </div>
         <div className="register_spotify_agreement_mini_block">
-          <p>
+          <p className="p">
             <span className="register_spotify_agreement_title">
               Чтобы узнать больше о том, как Spotify собирает, использует,
               передает и защищает персональные данные, прочитайте нашу {""}
@@ -202,7 +202,7 @@ const RegisterPage = () => {
           className="register_button">
           Зарегистрироваться
         </button>
-        <p className="register_footer_text">
+        <p className="register_footer_text p">
           Уже есть аккаунт?{" "}
           <Link to="/login" className="register_footer_link">
             Войти

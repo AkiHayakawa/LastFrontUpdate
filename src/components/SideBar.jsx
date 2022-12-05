@@ -9,7 +9,7 @@ const SideBar = () => {
   const navigate = useNavigate();
 
   return (
-    <div style={{display:'flex'}}>
+    <div style={{ display: "inline-flex", height: "100%" }}>
       <div className="SideBarBlock">
         <a
           href="#"
@@ -25,7 +25,7 @@ const SideBar = () => {
 
         <a
           href="#"
-          onClick={() => navigate("/musics")}
+          onClick={() => navigate("/music")}
           style={{ display: "flex", alignItems: "center", height: "30px" }}
         >
           <HomeIcon style={{ color: "white", marginLeft: "19px" }} />
